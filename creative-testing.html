@@ -117,6 +117,18 @@ body {
   background: var(--black);
   padding: 0 32px 0;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    url('https://framerusercontent.com/images/fgyKKr3g1dPjydOItu6UTCo3k8.gif') no-repeat right 10% top 20% / 200px auto,
+    url('https://framerusercontent.com/images/Hj87aXoVNswA39nVTP8YSDd3G00.png') no-repeat left 8% bottom 15% / 160px auto;
+  opacity: 0.06;
+  pointer-events: none;
 }
 .hero-inner {
   max-width: 1000px;
@@ -293,6 +305,59 @@ body {
 .card-coral h3 { color: var(--dark); }
 .card-yellow { background: var(--yellow-bg); color: #827717; }
 .card-yellow h3 { color: var(--dark); }
+
+/* === SHOWCASE GRID (cases with images like original) === */
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+.showcase-card {
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4/3;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.showcase-card:hover { transform: scale(1.01); }
+.showcase-card img,
+.showcase-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.showcase-card .showcase-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+}
+.showcase-card .showcase-tag {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--green);
+  margin-bottom: 6px;
+}
+.showcase-card h3 {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  color: #fff;
+  line-height: 1.25;
+}
+.showcase-card.wide {
+  grid-column: 1 / -1;
+  aspect-ratio: 21/9;
+}
 
 /* === RESULTS TABLE === */
 .table-wrap {
@@ -569,6 +634,8 @@ td strong {
   .batch-cards, .pricing-cards { grid-template-columns: 1fr; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .navbar-links { display: none; }
+  .showcase-grid { grid-template-columns: 1fr; }
+  .showcase-card.wide { aspect-ratio: 16/9; }
 }
 @media (max-width: 600px) {
   .hero-inner { padding: 40px 0 60px; }
@@ -639,6 +706,53 @@ td strong {
       <div class="stat-desc">creators<br>in our network</div>
     </div>
   </div>
+
+  <div class="section-divider"><hr></div>
+
+  <!-- CASE SHOWCASE -->
+  <section class="section">
+    <h2>Our <em>work</em></h2>
+    <p>UGC ads, AI statics, creator content, video production -- here's what we make.</p>
+    <div class="showcase-grid">
+      <div class="showcase-card">
+        <img src="https://framerusercontent.com/images/BmUk0KMAPqqpLzpARwDdXhfg.gif" alt="UGC Ads" loading="lazy">
+        <div class="showcase-overlay">
+          <div class="showcase-tag">UGC Video Ads</div>
+          <h3>High ROAS UGC Ads</h3>
+        </div>
+      </div>
+      <div class="showcase-card">
+        <img src="https://framerusercontent.com/images/XvWe2NX8ueLN1Jga9mG5VCRkNRU.gif" alt="Branding" loading="lazy">
+        <div class="showcase-overlay">
+          <div class="showcase-tag">Creative Production</div>
+          <h3>AI Static Ads -- 3x CTR</h3>
+        </div>
+      </div>
+      <div class="showcase-card">
+        <img src="https://framerusercontent.com/images/kAkM8v5CwAIerVmAdmMIBTqM30.png" alt="Content Cases" loading="lazy">
+        <div class="showcase-overlay">
+          <div class="showcase-tag">Content at Scale</div>
+          <h3>UGC Ads by Creators 45+</h3>
+        </div>
+      </div>
+      <div class="showcase-card">
+        <img src="https://framerusercontent.com/images/yRU505Z52FJaY1wv77laoTUjxM.png" alt="Video Content" loading="lazy">
+        <div class="showcase-overlay">
+          <div class="showcase-tag">Video Production</div>
+          <h3>1M Views Video Content</h3>
+        </div>
+      </div>
+      <div class="showcase-card wide">
+        <video autoplay muted loop playsinline>
+          <source src="https://framerusercontent.com/assets/zpXSYIdnhNKdLzx2JRyEEydYg9U.mp4" type="video/mp4">
+        </video>
+        <div class="showcase-overlay">
+          <div class="showcase-tag">Creator Network</div>
+          <h3>600+ creators. Sourced, vetted, managed.</h3>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <div class="section-divider"><hr></div>
 
